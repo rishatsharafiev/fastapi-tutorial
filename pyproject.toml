@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "fastapi-tutorial"
+version = "0.1.0"
+description = ""
+authors = ["Rishat Sharafiev <rishatsharafiev@ya.ru>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+fastapi = "^0.61.1"
+uvicorn = "^0.12.1"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
