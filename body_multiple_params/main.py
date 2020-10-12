@@ -1,6 +1,6 @@
 from typing import Optional
 
-from fastapi import FastAPI, Path
+from fastapi import FastAPI, Path, Body
 from pydantic import BaseModel
 
 app = FastAPI()
@@ -19,6 +19,21 @@ class User(BaseModel):
 
 
 @app.put("/items/{item_id}")
-async def update_item(item_id: int, item: Item, user: User):
-    results = {"item_id": item_id, "item": item, "user": user}
+async def update_item(
+    *,
+    item_id: int,
+    item: Item,
+    user: User,
+    importance: int = Body(..., gt=0),
+    q: Optional[str] = None
+):
+    results = {"item_id": item_id, "item": item, "user": user, "importance": importance}
+    if q:
+        results.update({"q": q})
+    return results
+
+
+@app.put("/items_2/{item_id}")
+async def update_item_2(item_id: int, item: Item = Body(..., embed=True)):
+    results = {"item_id": item_id, "item": item}
     return results
