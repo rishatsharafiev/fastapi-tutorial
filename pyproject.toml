@@ -8,6 +8,7 @@ authors = ["Rishat Sharafiev <rishatsharafiev@ya.ru>"]
 python = "^3.7"
 fastapi = "^0.61.1"
 uvicorn = "^0.12.1"
+pydantic = {extras = ["email"], version = "^1.6.1"}
 
 [tool.poetry.dev-dependencies]
 mypy = "^0.782"
